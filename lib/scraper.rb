@@ -16,15 +16,13 @@ class Scraper
       array_of_students[:profile_url] = "#{student.css("a").attribute("href").value}" 
       students << array_of_students
     }
-    students  
+     students  
   end
 
   def self.scrape_profile_page(profile_url)
     profile = {}
-    
     doc = Nokogiri::HTML(open(profile_url))
 
-  #  binding.pry
     doc.css("div.main-wrapper.profile .social-icon-container a").each { |social|
       if social.attribute("href").value.include?("twitter")
         profile[:twitter] = social.attribute("href").value
@@ -36,7 +34,6 @@ class Scraper
         profile[:blog] = social.attribute("href").value
       end 
     }
-    
     profile[:profile_quote] = doc.css("div.main-wrapper.profile .profile-quote").text
     profile[:bio] = doc.css("div.main-wrapper.profile .description-holder p").text
   
