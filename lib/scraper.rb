@@ -1,11 +1,13 @@
 require 'open-uri'
 require 'nokogiri'
 require 'pry'
+require 'nokogiri'
 
 
 class Scraper
 
   def self.scrape_index_page(index_url)
+<<<<<<< HEAD
     students = []
     doc = Nokogiri::HTML(open(index_url))
 
@@ -38,9 +40,19 @@ class Scraper
     profile[:bio] = doc.css("div.main-wrapper.profile .description-holder p").text
   
     profile
+=======
+    doc = Nokogiri::HTML(open(index_url))
+    binding.pry
+  # pp doc.css("h4.student-name")
+  end
+
+  def self.scrape_profile_page(profile_url)
+
+>>>>>>> aec15a817382aa4d6889d4d23042c08032a0ef58
   end
 
 
+<<<<<<< HEAD
 
 end #end of class
 
@@ -63,3 +75,9 @@ end #end of class
 #doc.css("div.roster-cards-container div.student-card p.student-location").each {|x| puts x.text}
 
  
+=======
+#body > div > div > div.roster-cards-container
+#ryan-johnson-card
+#ryan-johnson-card > a
+#ryan-johnson-card > a > div.card-text-container > h4
+>>>>>>> aec15a817382aa4d6889d4d23042c08032a0ef58
